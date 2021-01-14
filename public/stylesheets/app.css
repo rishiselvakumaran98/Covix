@@ -1,0 +1,93 @@
+/*html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+   Margin bottom by footer height 
+  margin-bottom: 60px;
+}*/
+/*.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+   Set the fixed height of the footer here 
+  height: 60px;
+  background-color: #f5f5f5;
+}*/
+
+/*.container .text-muted {
+  margin: 20px 0;
+}*/
+
+ /*Thumbnail styles 
+.thumbnail img {
+    width: 100%;
+}*/
+
+/*.thumbnail {
+    padding: 0;
+}*/
+
+/*.thumbnail .caption-full {
+    padding: 9px;
+}*/
+
+/* Google Map styles */
+/*#map {
+	height: 400px;
+	width: 100%;
+}*/
+
+/* Campground show page delete button */
+/*.delete-form {
+	display: inline-block;
+}*/
+
+/* Flexbox grid fix */
+/*.flex-wrap {
+  display:flex;
+  flex-wrap: wrap;
+}*/
+
+/*My font designs */
+i.icon{
+	font-size: 2em;
+}
+
+.container.main{
+	margin-top: 7em; 
+}
+
+.ui\ container.item{
+	font-size: 20px;
+}
+
+.jumbotron{
+	background-image: url('../triangles-download\ (1).png');
+}
+
+.container{
+	margin: auto
+}
+
+/*
+The control below is for the menu bar
+*/
+@media screen and (min-width: 768px){
+	  .dropdown:hover .dropdown-menu, .btn-group:hover .dropdown-menu{
+	        display: block;
+	    }
+	    .dropdown-menu{
+	        margin-top: 0;
+	    }
+	    .dropdown-toggle{
+	        margin-bottom: 2px;
+	    }
+	    .navbar .dropdown-toggle, .nav-tabs .dropdown-toggle{
+	        margin-bottom: 0;
+	    }
+	}
+
+.navbar-pills { 
+	color: green;
+}

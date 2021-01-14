@@ -1,0 +1,54 @@
+<%- include("../partials/header")%>
+
+<div class="ui main text container segment">
+
+	<div class="ui huge header"><%=blog.title%></div>
+	<span>By <%= blog.author.username%></span>
+	<!-- Add this in: <%=blog.author.image%> -->
+	<div class="ui top attached">
+		<div class="item">
+			<img class="ui centered rounded image" src="<%=blog.image%>">
+			<div class="content">
+				<span><%= blog.created.toDateString()%></span>
+				<!-- Use moment js for a better date display to user -->
+			</div>
+			<div class="description">
+				<p><%-blog.description%></p>
+			</div>
+			<% if(currentUser && blog.author.id.equals(currentUser._id)){ %>
+				<a href="/blogs/<%=blog._id%>/edit" class="ui orange basic button">Update Blog</a>
+	            <form style="display: inline" method="POST" action="/blogs/<%=blog._id%>?_method=DELETE">
+	                <button class="ui red basic button" type="submit">Delete Blog</button>
+	            </form>
+	        <% } %>
+
+	        <div class="right item">
+	        	<a href="/blogs/<%=blog._id%>/comments/new" class="ui blue basic button">Add Comments</a>
+	        </div>
+
+	        <hr>
+	        <h4>Comments</h4>
+	        <hr>
+	        <% blog.comments.forEach(function(comment){ %>
+	            <div class="row">
+	                <div class="col-md-12">
+	                    <strong><%= comment.author.username %></strong>
+	                    <span class="pull-right">10 days ago</span>
+	                    <p>
+	                        <%= comment.text %> 
+	                    </p>
+	                <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+	                    <a class="btn btn-xs btn-warning" 
+	                       href="/blogs/<%=blog._id %>/comments/<%=comment._id %>/edit">Edit</a>
+	                    <form style="display: inline" id="delete-form" action="/blogs/<%=blog._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
+	                        <input type="submit" class="btn btn-xs btn-danger" value="Delete">
+	                    </form>
+	                <% } %>
+	                </div>
+	            </div>
+	        <% }) %>
+	        
+		</div>
+	</div>
+</div>
+<%- include("../partials/footer")%>

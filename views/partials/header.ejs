@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>Covix</title>
+    <link rel="icon" type="image/png" href="/apple-touch-icon.png" />
+  	<!-- CSS link for Semantic UI used for designing the blog forms -->
+  	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  	<!-- CSS link for Bootstrap 4 used for designing majority of web forms -->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  	<link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"> -->
+
+  </head>
+  <body>
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="/"><i class="fas fa-viruses"></i> Covix</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample03">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/blogs">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Info</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown03">
+              <a class="dropdown-item" href="/about">About Covid-19</a>
+              <a class="dropdown-item" href="/prevention">Prevention</a>
+              <a class="dropdown-item" href="/treatment">Possible treatment</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <form action="/blogs" method="GET" class="form-inline" id="blog-search">
+        <div class="form-group">
+          <input type="text" name="search" placeholder="Blog search..." class="form-control">
+        </div>
+      </form>
+     <ul class="navbar-nav">
+     		<%if(!currentUser){%>
+       		<li>
+       		    <a class="nav-link" href="/login">Login<span class="sr-only">(current)</span></a>
+       		</li>
+       		<li>
+            <a class="nav-link" href="/register">Sign Up</a><span class="sr-only">(current)</span>
+          </li>
+       	<%}else{%>
+       		<li class="nav-item dropdown">
+       		    <a class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, <%=currentUser.username%></a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="dropdown-item" href="/blogs/my-posts">My Posts</a>
+                <!-- <a class="dropdown-item" href="/blogs/AI">AI and ML</a>
+                <a class="dropdown-item" href="/blogs/data-science">Data Science</a>
+                <a class="dropdown-item" href="/blogs/internship-advice">Internship advice</a> -->
+              </div>
+       		</li>
+       		<li class="nav-item active">
+       		    <a class="nav-link" href="/logout">Logout<span class="sr-only">(current)</span></a>
+       		</li>
+       	<%} %>
+     </ul>
+  </nav>
+    
+<div class="container">
+   <% if(error && error.length > 0) { %>
+     <div id="danger-alert" data-dismiss="alert" class="alert alert-danger"><p><%=error %></p></div>
+   <% } %>
+   
+   <% if(success && success.length > 0) { %>
+     <div id="success-alert" data-dismiss="alert" class="alert alert-success"><p><%= success %></p></div>
+   <% } %>
+</div>
+<div class="container">

@@ -1,0 +1,54 @@
+<%-include("../partials/header")%>
+
+	<header class="jumbotron">
+         <!-- <div class="container">
+             <h1> Welcome to Covid-19 charts</h1>
+         </div> -->
+     </header>
+     <div class="container">
+     	<iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px"></iframe>
+     	<iframe src="https://ourworldindata.org/grapher/covid-confirmed-cases-since-100th-case?country=USA+ESP+ITA+KOR+TWN+GBR+NOR" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+     	<iframe src="https://public.domo.com/cards/bWxVg" width="100%" height="600" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+     	<iframe src="https://public.domo.com/cards/azrGr" width="100%" height="600" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+     </div>
+     
+
+	<div class="ui main text container">
+	   	<div class="ui menu">
+	   		<div class="huge header item">Latest Blogs</div>
+	   		<div class="right menu"><a href="/blogs/new" class="ui blue basic button">New Blog</a></div>
+	   		<!-- <i class="fa fa-plus-square-o" aria-hidden="true"></i> -->
+	   	</div>
+	    <div class="ui top attached segment">
+	<div class="ui divided items" id="blog-grid">
+		<% blogs.forEach((blog)=>{ %>
+		 <div class="item">
+		    <div class="image">
+		      <img src="<%= blog.image %>">
+		    </div>
+		    <div class="content">
+		      <a class="header"><%= blog.title %></a>
+		      <div class="meta">
+		        <span class="cinema"><%= blog.created.toDateString() %></span>
+		      </div>
+		      <div class="description">
+		        <p><%= blog.description.substring(0,50)%> ...</p>
+		        <!-- .substring(0,100); -->
+		      </div>
+		      <div class="extra">
+		        <a href="/blogs/<%=blog._id %>">
+		        	<div class="ui animated blue basic button" tabindex="0">
+					  <div class="visible content">Read More</div>
+					  <div class="hidden content">
+					    <i class="right arrow icon"></i>
+					  </div>
+					</div>
+		        </a>
+		      </div>
+		    </div>
+		  </div>
+		<% }); %>
+	</div>
+	</div>
+	</div>
+<%-include("../partials/footer")%>

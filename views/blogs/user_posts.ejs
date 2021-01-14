@@ -1,0 +1,47 @@
+<%-include("../partials/header")%>
+
+	<header class="jumbotron">
+         <div class="container">
+             <h1> My Blogs for CS</h1>
+         </div>
+     </header>
+
+	<div class="ui main text container">
+	   	<div class="ui menu">
+	   		<div class="huge header item">My Blogs</div>
+	   		<div class="right menu"><a href="/blogs/new" class="ui blue basic button">New Blog</a></div>
+	   		<!-- <i class="fa fa-plus-square-o" aria-hidden="true"></i> -->
+	   	</div>
+	    <div class="ui top attached segment">
+	<div class="ui divided items" id="blog-grid">
+		<% blogs.forEach((blog)=>{ %>
+			<%if(blog.author.id.equals(user._id)){%>
+				 <div class="item">
+				    <div class="image">
+				      <img src="<%= blog.image %>">
+				    </div>
+				    <div class="content">
+				      <a class="header"><%= blog.title %></a>
+				      <div class="meta">
+				        <span class="cinema"><%= blog.created.toDateString() %></span>
+				      </div>
+				      <div class="description">
+				        <p><%= blog.description.substring(0,50)%> ...</p>
+				        <!-- .substring(0,100); -->
+				      </div>
+				      <div class="extra">
+				        <a href="/blogs/<%=blog._id %>">
+				        	<div class="ui animated blue basic button" tabindex="0">
+							  <div class="visible content">Read More</div>
+							  <div class="hidden content">
+							    <i class="right arrow icon"></i>
+							  </div>
+							</div>
+				        </a>
+				      </div>
+				    </div>
+				  </div>
+			<%}%>
+		<% }); %>
+	</div>
+	</div>

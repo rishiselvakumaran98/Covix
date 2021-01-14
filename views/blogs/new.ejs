@@ -1,0 +1,32 @@
+<%- include("../partials/header")%>
+
+<div class="ui main text container segment">
+	<div class="ui huge header">Create a new blog!</div>
+	<form id="blog_form" class="ui form" action="/blogs" method="POST">
+		<div class="form-group">
+			<input class="form-control" type="text" name="title" placeholder="Title">
+		</div>
+		<div class="form-group">
+			<!-- <label for="topic">Choose a topic:</label> -->
+			<input class="form-control" type="text" name="topic" placeholder="Topic" list="topic-name">
+			<!--  / -->
+				<datalist id="topic-name">
+			      <option value=" About covid-19">
+      			  <option value="Treatments for Covid-19">
+      			  <option value="Vaccine reports">
+      			  <option value="General">
+				</datalist>
+		</div>
+		<div class="form-group">
+			<input title="Only web images ending with .jpg, .png are allowed." class="form-control" type="text" name="image" placeholder="image url">
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" name="description" placeholder="description"></textarea>
+		</div>
+		
+		<button class="ui blue big inverted button">Save</button>
+	</form>
+	<a class="btn btn-danger btn-sm" href="/blogs">Go Back</a>
+</div>
+
+<%- include("../partials/footer")%>
