@@ -111,6 +111,7 @@ app.use("/blogs/:id/comments", commentRoutes);
 
 
 //Setup app server for viewing
-app.listen(app.get('port'), process.env.IP, function(){
+const port = process.env.PORT || 3000;
+app.listen(port, process.env.IP, function(){
 	console.log("Yep server is connected");
 });
